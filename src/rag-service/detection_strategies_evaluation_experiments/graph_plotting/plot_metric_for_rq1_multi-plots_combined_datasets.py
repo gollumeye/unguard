@@ -49,21 +49,8 @@ def plot_all_metrics_combined(df, strategy, attack, output_dir="multi-plots-comb
             fontweight="bold"
         )
 
-        # Dynamic y-limits based on all datasets
-        y_values = subset[metric].dropna()
-
-        if not y_values.empty:
-            y_max = y_values.max()
-            y_min = y_values.min()
-
-            # Add padding only to the top
-            value_range = y_max - y_min
-            padding = max(0.02, value_range * 0.05)
-
-            upper = min(1.02, y_max + padding)
-
-            ax.set_ylim(0, upper)
-            ax.margins(y=0.02)  # ensures lines at 0 are still visible
+        ax.set_ylim(0, 1.02) # ensures lines at 1 are still visible
+        ax.margins(y=0.02)  # ensures lines at 0 are still visible
 
 
         ax.set_xticks([0, 10, 40, 70, 100])
@@ -80,7 +67,14 @@ def plot_all_metrics_combined(df, strategy, attack, output_dir="multi-plots-comb
 
     # One shared legend for all subplots
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper right")
+    legend = fig.legend(
+        handles,
+        labels,
+        title="Datasets",
+        loc="upper right"
+    )
+
+    legend.get_title().set_fontweight("bold")
 
     plt.tight_layout(rect=[0, 0, 0.9, 0.95])
 
