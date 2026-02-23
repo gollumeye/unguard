@@ -17,16 +17,12 @@ def pretty_attack_name(name):
     }
     return mapping.get(name, name.replace("_", " ").title())
 
-
-def pretty_dataset_name(name):
-    return name.upper() if name.lower() == "enron" else name.title()
-
 DATASET_DISPLAY_NAMES = {
-    "Deysi_Spam_Detection": "Spam Detection Dataset",
-    "ENRON": "Enron Spam Dataset",
-    "Sms_Spam": "SMS Spam Collection Dataset",
-    "Spam_Assassin": "Spam Assassin Dataset",
+    "deysi_spam_detection": "Spam Detection Dataset",
+    "enron": "Enron Spam Dataset",
+    "sms_spam": "SMS Spam Collection Dataset",
+    "spam_assassin": "Spam Assassin Dataset",
 }
 
 def full_dataset_name(name):
-    return DATASET_DISPLAY_NAMES.get(name, pretty_dataset_name(name))
+    return DATASET_DISPLAY_NAMES.get(name, name)

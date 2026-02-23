@@ -4,7 +4,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from read_evaluation_results import load_evaluation_results
-from utils import pretty_strategy_name, pretty_attack_name, pretty_dataset_name, full_dataset_name
+from utils import pretty_strategy_name, pretty_attack_name, full_dataset_name
 
 OUTPUT_DIR = "generated_graphs/rq1"
 
